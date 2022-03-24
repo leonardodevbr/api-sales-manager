@@ -17,6 +17,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 {
     use Authenticatable, Authorizable, Notifiable, HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        "email",
+        "password"
+    ];
+
     /**
      * The attributes that should be hidden for serialization.
      *

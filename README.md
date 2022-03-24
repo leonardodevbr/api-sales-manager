@@ -718,3 +718,255 @@ Response
   "message": "Produto removido com sucesso!"
 }
 ```
+
+
+<br><br>
+
+## Vendedores
+
+#### [GET] Listar Vendedores
+
+```
+/api/v1/sellers
+```
+
+#### Parâmetros Opcionais
+- sort_by (default:name)
+- order_by (default:asc)
+- limit (default:10)
+  <br><br>
+
+Headers
+
+```json
+{
+  "Authorization": "Bearer {ACCESS_TOKEN}",
+  "Content-Type": "application/json"
+}
+```
+
+Body
+
+```json
+{
+}
+```
+
+Response
+
+```json
+{
+  "statusCode": 200,
+  "data": {
+    "current_page": 1,
+    "data": [
+      {
+        "id": 2,
+        "user_id": 5,
+        "name": "Cláudia Sepúlveda",
+        "cnpj": "24.115.925/6801-28",
+        "user": {
+          "id": 5,
+          "email": "suelen17@example.net"
+        }
+      },
+      {
+        "id": 6,
+        "user_id": 12,
+        "name": "Rogério N Oliveira",
+        "cnpj": "34.055.665/0001-01",
+        "user": {
+          "id": 12,
+          "email": "adsleonardo.o@gmail.com"
+        }
+      }
+    ],
+    "first_page_url": "http://localhost:8000/api/v1/sellers?page=1",
+    "from": 1,
+    "next_page_url": "http://localhost:8000/api/v1/sellers?page=2",
+    "path": "http://localhost:8000/api/v1/sellers",
+    "per_page": "2",
+    "prev_page_url": null,
+    "to": 2
+  },
+  "message": "Lista de vendedores."
+}
+```
+
+<br><br>
+
+#### [GET] Visualizar Vendedor
+
+```
+/api/v1/sellers/{sellerId}
+```
+
+Headers
+
+```json
+{
+  "Authorization": "Bearer {ACCESS_TOKEN}",
+  "Content-Type": "application/json"
+}
+```
+
+Body
+
+```json
+{
+}
+```
+
+Response
+
+```json
+{
+  "statusCode": 200,
+  "data": {
+    "id": 1,
+    "user_id": 3,
+    "name": "Srta. Priscila Fidalgo Jr.",
+    "cnpj": "01.010.084/8161-42",
+    "user": {
+      "id": 3,
+      "email": "nestrada@example.net"
+    }
+  },
+  "message": "Dados do vendedor #1."
+}
+```
+
+<br><br>
+
+#### [PUT] Cadastrar Vendedor
+
+```
+/api/v1/sellers
+```
+
+Headers
+
+```json
+{
+  "Authorization": "Bearer {ACCESS_TOKEN}",
+  "Content-Type": "application/json"
+}
+```
+
+Body
+
+```json
+{
+  "name": "Rogério Oliveira",
+  "cnpj": "34.055.665/0001-01",
+  "email": "adsleonardo.o@gmail.com",
+  "password": "123456"
+}
+```
+
+Response
+
+```json
+{
+  "statusCode": 200,
+  "data": {
+    "user_id": 13,
+    "name": "Rogério Oliveira",
+    "cnpj": "34.055.665/0001-01",
+    "id": 7,
+    "user": {
+      "id": 13,
+      "email": "adsleonardo.o@gmail.com"
+    }
+  },
+  "message": "Vendedor cadastrado com sucesso!"
+}
+```
+
+<br><br>
+
+#### [POST] Atualizar Vendedor
+
+```
+/api/v1/sellers/{sellerId}
+```
+
+Headers
+
+```json
+{
+  "Authorization": "Bearer {ACCESS_TOKEN}",
+  "Content-Type": "application/json"
+}
+```
+
+Body
+
+```json
+{
+  "name": "Rogério N Oliveira",
+  "cnpj": "34.055.665/0001-01"
+}
+```
+
+Response
+
+```json
+{
+  "statusCode": 200,
+  "data": {
+    "id": 6,
+    "user_id": 12,
+    "name": "Rogério N Oliveira",
+    "cnpj": "34.055.665/0001-01",
+    "user": {
+      "id": 12,
+      "email": "adsleonardo.o@gmail.com"
+    }
+  },
+  "message": "Vendedor atualizado com sucesso!"
+}
+```
+
+<br><br>
+
+#### [DELETE] Remover Vendedor
+
+```
+/api/v1/sellers/{sellerId}
+```
+
+Headers
+
+```json
+{
+  "Authorization": "Bearer {ACCESS_TOKEN}",
+  "Content-Type": "application/json"
+}
+```
+
+Body
+
+```json
+{
+}
+```
+
+Response
+
+```json
+{
+  "statusCode": 200,
+  "data": {
+    "id": 7,
+    "user_id": 13,
+    "name": "Rogério Oliveira",
+    "cnpj": "34.055.665/0001-01",
+    "user": {
+      "id": 13,
+      "email": "adsleonardo.o@gmail.com"
+    }
+  },
+  "message": "Vendedor removido com sucesso!"
+}
+```

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\ProductController;
+use App\Http\Controllers\Api\v1\SellerController;
 use App\Http\Controllers\Api\v1\CustomerController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,14 @@ Route::group(['prefix' => 'v1'], function ($router) {
             $router->put('/', [ProductController::class, "store"]);
             $router->post('/{id}', [ProductController::class, "update"]);
             $router->delete('/{id}', [ProductController::class, "destroy"]);
+        });
+
+        $router->group(['prefix' => 'sellers'], function ($router) {
+            $router->get('/', [SellerController::class, "index"]);
+            $router->get('/{id}', [SellerController::class, "show"]);
+            $router->put('/', [SellerController::class, "store"]);
+            $router->post('/{id}', [SellerController::class, "update"]);
+            $router->delete('/{id}', [SellerController::class, "destroy"]);
         });
 
     });
