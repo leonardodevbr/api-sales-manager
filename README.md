@@ -1,10 +1,9 @@
 # Configurações do Projeto
 
-Para rodar este projeto é necessário ter o [Docker](https://www.docker.com/) instalado na sua máquina.
+Para executar este projeto, é necessário ter o [Docker](https://www.docker.com/) instalado na sua máquina.
 <br><br>
 Caso já o tenha instalado, faça o clone do projeto e siga as instruções abaixo.
-<br>
-<br>
+<br><br>
 
 1 - Criar o arquivo .env
 
@@ -79,6 +78,24 @@ php artisan db:seed
 
 ### Agora já deve ser possível acessar os endpoints da aplicação.
 
+Todos os endpoints podem ser testados através da ferramenta [Postman](https://www.postman.com/), importando a collection
+disponível [neste link](https://www.getpostman.com/collections/6ad4880ec708777c3e90).
+<br><br>
+Os dados gerados inicialmente para login são:<br>
+
+#### E-mail:
+
+```
+admin@domain.com
+```
+
+#### Senha:
+
+```
+password
+```
+
+<br>
 A Collection do Postman disponibilizada acima já deve ter as configurações necessárias para testar a API. <br>
 
 - [x] Variável {{host}} com a URL base do projeto;
@@ -1510,28 +1527,6 @@ Response
 ```
 
 <br><br>
-Todos os endpoints podem ser testados através da ferramenta [Postman](https://www.postman.com/) importando a collection
-disponível [neste link](https://www.getpostman.com/collections/6ad4880ec708777c3e90).
-<br><br>
-Os dados gerados inicialmente para login são:<br>
-
-#### E-mail:
-
-```
-admin@domain.com
-```
-
-#### Senha:
-
-```
-password
-```
-
-<br><br>
-
-Obrigado!
-
-<br><br>
 
 Desenvolvido por
-[Leonardo Oliveira](https://www.linkedin.com/in/adsleonardo/)
+[Leonardo Oliveira](https://www.linkedin.com/in/adsleonardo/) 
