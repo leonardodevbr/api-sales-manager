@@ -54,7 +54,7 @@ php artisan jwt:secret
 Gerar as tabelas
 
 ```sh
-php artisan migrate:fresh --seed
+php artisan migrate
 ```
 
 <br>
@@ -66,23 +66,24 @@ php artisan db:seed
 
 <br>
 URL base da API
+
 [http://localhost:8000/api/v1](http://localhost:8000/api/v1)
 
 # Endpoints Disponíveis
 
 ## Autenticação
 
-### Login
+#### [POST] Login
 
 ```
-[POST] /api/v1/auth/login
+/api/v1/auth/login
 ```
 
 Body
 
 ```json
 {
-  "email": "matias.vanessa@example.com",
+  "email": "admin@domain.com",
   "password": "password"
 }
 ```
@@ -91,175 +92,29 @@ Response
 
 ```json
 {
-  "access_token": "ACCESS_TOKEN",
-  "token_type": "bearer",
-  "expires_in": 3600
-}
-```
-
-<br><br>
-
-### Logout
-
-```
-[POST] /api/v1/auth/logout
-```
-
-Headers
-
-```json
-{
-  "Authorization": "Bearer {{ACCESS_TOKEN}}",
-  "Content-Type": "application/json"
-}
-```
-
-Body
-
-```json
-{
-}
-```
-
-Response
-
-```json
-{
-  "message": "Successfully logged out"
-}
-```
-
-<br><br>
-
-### Usuário Logado
-
-```
-[POST] /api/v1/auth/me
-```
-
-Headers
-
-```json
-{
-  "Authorization": "Bearer {{ACCESS_TOKEN}}",
-  "Content-Type": "application/json"
-}
-```
-
-Body
-
-```json
-{
-  "id": 1,
-  "email": "matias.vanessa@example.com",
-  "created_at": "2022-03-23T22:50:48.000000Z",
-  "updated_at": "2022-03-23T22:50:48.000000Z"
-}
-```
-
-Response
-
-```json
-{
-  "message": "Successfully logged out"
-}
-```
-
-<br><br>
-
-### Atualizar Token
-
-```
-[POST] /api/v1/auth/refresh
-```
-
-Headers
-
-```json
-{
-  "Authorization": "Bearer {{ACCESS_TOKEN}}",
-  "Content-Type": "application/json"
-}
-```
-
-Body
-
-```json
-{
-}
-```
-
-Response
-
-```json
-{
-  "Authorization": "Bearer {{ACCESS_TOKEN}}",
-  "token_type": "bearer",
-  "expires_in": 3600
-}
-```
-
-<br><br>
-
-## Produtos
-
-### Listar Produtos
-
-```
-[GET] /api/v1/products
-```
-
-Headers
-
-```json
-{
-  "Authorization": "Bearer {{ACCESS_TOKEN}}",
-  "Content-Type": "application/json"
-}
-```
-
-Body
-
-```json
-{
-}
-```
-
-Response
-
-```json
-[
-  {
-    "id": 1,
-    "batch_id": 10,
-    "code": "2022032398538",
-    "name": "Garrafa Térmica",
-    "color": "silver",
-    "description": "Garrafa térmica com interior de vidro e capa metálica (...)",
-    "price": 89.90,
-    "formatted_price": "R$89,90",
-    "created_at": "2022-03-23T22:50:49.000000Z",
-    "updated_at": "2022-03-23T22:50:49.000000Z"
+  "statusCode": 200,
+  "data": {
+    "access_token": "ACCESS_TOKEN",
+    "token_type": "bearer",
+    "expires_in": 3600
   },
-  {
-    ...
-  }
-]
+  "message": "Autenticado com sucesso."
+}
 ```
 
 <br><br>
 
-### Visualizar Produto
+#### [POST] Logout
 
 ```
-[GET] /api/v1/products/:productId
+/api/v1/auth/logout
 ```
 
 Headers
 
 ```json
 {
-  "Authorization": "Bearer {{ACCESS_TOKEN}}",
+  "Authorization": "Bearer {ACCESS_TOKEN}",
   "Content-Type": "application/json"
 }
 ```
@@ -274,21 +129,183 @@ Body
 Response
 
 ```json
-[
-  {
+{
+  "statusCode": 200,
+  "data": [],
+  "message": "Logout efetuado com sucesso."
+}
+```
+
+<br><br>
+
+#### [POST] Usuário Logado
+
+```
+/api/v1/auth/me
+```
+
+Headers
+
+```json
+{
+  "Authorization": "Bearer {ACCESS_TOKEN}",
+  "Content-Type": "application/json"
+}
+```
+
+Body
+
+```json
+{
+}
+```
+
+Response
+
+```json
+{
+  "statusCode": 200,
+  "data": {
     "id": 1,
-    "batch_id": 10,
-    "code": "2022032398538",
-    "name": "Garrafa Térmica",
-    "color": "silver",
-    "description": "Garrafa térmica com interior de vidro e capa metálica (...)",
-    "price": 89.90,
-    "formatted_price": "R$89,90",
-    "created_at": "2022-03-23T22:50:49.000000Z",
-    "updated_at": "2022-03-23T22:50:49.000000Z"
+    "email": "admin@domain.com",
+    "created_at": "2022-03-24T03:24:47.000000Z",
+    "updated_at": "2022-03-24T03:24:47.000000Z",
+    "deleted_at": null
   },
-  {
-    ...
-  }
-]
+  "message": "Dados do usuário logado."
+}
+```
+
+<br><br>
+
+#### [POST] Atualizar Token
+
+```
+/api/v1/auth/refresh
+```
+
+Headers
+
+```json
+{
+  "Authorization": "Bearer {ACCESS_TOKEN}",
+  "Content-Type": "application/json"
+}
+```
+
+Body
+
+```json
+{
+}
+```
+
+Response
+
+```json
+{
+  "statusCode": 200,
+  "data": {
+    "access_token": "ACCESS_TOKEN",
+    "token_type": "bearer",
+    "expires_in": 3600
+  },
+  "message": "Token atualizado com sucesso."
+}
+```
+
+<br><br>
+
+## Clientes
+
+#### [GET] Listar Clientes
+
+```
+/api/v1/customers
+```
+
+Headers
+
+```json
+{
+  "Authorization": "Bearer {ACCESS_TOKEN}",
+  "Content-Type": "application/json"
+}
+```
+
+Body
+
+```json
+{
+}
+```
+
+Response
+
+```json
+{
+  "statusCode": 200,
+  "data": [
+    {
+      "id": 1,
+      "name": "Cléber Sérgio de Aguiar Jr.",
+      "cpf": "318.490.520-82",
+      "birthdate": "24/12/1995",
+      "created_at": "2022-03-24T03:24:47.000000Z",
+      "updated_at": "2022-03-24T03:24:47.000000Z",
+      "deleted_at": null
+    },
+    {
+      "id": 2,
+      "name": "Caio Feliciano Neto",
+      "cpf": "821.156.731-05",
+      "birthdate": "19/07/1955",
+      "created_at": "2022-03-24T03:24:47.000000Z",
+      "updated_at": "2022-03-24T03:24:47.000000Z",
+      "deleted_at": null
+    }
+  ]
+}
+```
+
+<br><br>
+
+#### [GET] Visualizar Cliente
+
+```
+/api/v1/customers/{customerId}
+```
+
+Headers
+
+```json
+{
+  "Authorization": "Bearer {ACCESS_TOKEN}",
+  "Content-Type": "application/json"
+}
+```
+
+Body
+
+```json
+{
+}
+```
+
+Response
+
+```json
+{
+  "statusCode": 200,
+  "data": {
+    "id": 1,
+    "name": "Cléber Sérgio de Aguiar Jr.",
+    "cpf": "318.490.520-82",
+    "birthdate": "24/12/1995",
+    "created_at": "2022-03-24T03:24:47.000000Z",
+    "updated_at": "2022-03-24T03:24:47.000000Z",
+    "deleted_at": null
+  },
+  "message": "Dados do cliente #1."
+}
 ```

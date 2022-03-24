@@ -8,6 +8,19 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
     /**
+     * @param $token
+     * @return array
+     */
+    private function bodyWithToken($token)
+    {
+        return [
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth('api')->factory()->getTTL() * 60
+        ];
+    }
+
+    /**
      * Get a JWT via given credentials.
      *
      * @return \Illuminate\Http\JsonResponse
@@ -17,10 +30,10 @@ class AuthController extends Controller
         $credentials = $request->only(['email', 'password']);
 
         if (!$token = auth('api')->attempt($credentials)) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+            return $this->prepareResponse($credentials, "Não autorizado", 401);
         }
 
-        return $this->respondWithToken($token);
+        return $this->prepareResponse($this->bodyWithToken($token), "Autenticado com sucesso.");
     }
 
     /**
@@ -30,7 +43,7 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth('api')->user());
+        return $this->prepareResponse(auth('api')->user(), "Dados do usuário logado.");
     }
 
     /**
@@ -42,7 +55,7 @@ class AuthController extends Controller
     {
         auth('api')->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        return $this->prepareResponse([], "Logout efetuado com sucesso.");
     }
 
     /**
@@ -52,22 +65,6 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth('api')->refresh());
-    }
-
-    /**
-     * Get the token array structure.
-     *
-     * @param  string $token
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    protected function respondWithToken($token)
-    {
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60
-        ]);
+        return $this->prepareResponse($this->bodyWithToken(auth('api')->refresh()), "Token atualizado com sucesso.");
     }
 }
