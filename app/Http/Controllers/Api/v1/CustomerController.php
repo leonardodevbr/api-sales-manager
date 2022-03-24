@@ -15,9 +15,14 @@ class CustomerController extends Controller
      *
      * @return JsonResponse
      */
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        $customers = Customer::all();
+        $sortBy = $request->get('sort_by', 'name');
+        $orderBy = $request->get('order_by', 'asc');
+        $limit = $request->get('limit', 10);
+
+        $customers = Customer::orderBy($sortBy, $orderBy)
+            ->paginate($limit);
 
         if ($customers->isEmpty()) {
             return $this->prepareResponse(null, "Nenhum cliente cadastrado.", 404);
