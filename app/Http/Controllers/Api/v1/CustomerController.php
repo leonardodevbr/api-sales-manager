@@ -22,7 +22,7 @@ class CustomerController extends Controller
         $limit = $request->get('limit', 10);
 
         $customers = Customer::orderBy($sortBy, $orderBy)
-            ->paginate($limit);
+            ->simplePaginate($limit);
 
         if ($customers->isEmpty()) {
             return $this->prepareResponse(null, "Nenhum cliente cadastrado.", 404);

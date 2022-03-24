@@ -29,6 +29,12 @@ class Seller extends Model
 
     protected $table = 'sellers';
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
     protected $casts = [
         'user_id' => 'int'
     ];

@@ -29,6 +29,12 @@ class Order extends Model
     
 	protected $table = 'orders';
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
 	protected $casts = [
 		'seller_id' => 'int',
 		'customer_id' => 'int',

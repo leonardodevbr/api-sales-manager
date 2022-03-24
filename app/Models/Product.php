@@ -31,6 +31,12 @@ class Product extends Model
 
     protected $table = 'products';
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
     protected $casts = [
         'batch_id' => 'int',
         'price' => 'int'
@@ -45,14 +51,6 @@ class Product extends Model
         'price'
     ];
 
-    public static $rulesStore = [
-        "*" => "required"
-    ];
-
-    public static $messages = [
-
-    ];
-
     public function batch()
     {
         return $this->belongsTo(Batch::class);
@@ -62,4 +60,16 @@ class Product extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    public function setPriceAttribute($price)
+    {
+        $this->attributes['price'] = preg_replace("/[^0-9]/", "", $price);
+    }
+
+    public function getPriceAttribute()
+    {
+        $price = str_pad($this->attributes['price'], 3, 0, STR_PAD_LEFT);
+        return substr_replace($price, '.', -2, 0);
+    }
+
 }

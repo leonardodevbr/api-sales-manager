@@ -25,6 +25,12 @@ class Batch extends Model
 
     protected $table = 'batches';
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
     protected $dates = [
         'manufacturing_date'
     ];

@@ -20,7 +20,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->unique()->lastName(),
             'color' => $this->faker->safeColorName(),
             'description' => $this->faker->unique()->realTextBetween(),
-            'price' => $this->faker->numberBetween(100, 30000),
+            'price' => $this->faker->numberBetween(1, 30000),
         ];
     }
 }

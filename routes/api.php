@@ -40,5 +40,13 @@ Route::group(['prefix' => 'v1'], function ($router) {
             $router->delete('/{id}', [CustomerController::class, "destroy"]);
         });
 
+        $router->group(['prefix' => 'products'], function ($router) {
+            $router->get('/', [ProductController::class, "index"]);
+            $router->get('/{id}', [ProductController::class, "show"]);
+            $router->put('/', [ProductController::class, "store"]);
+            $router->post('/{id}', [ProductController::class, "update"]);
+            $router->delete('/{id}', [ProductController::class, "destroy"]);
+        });
+
     });
 });
