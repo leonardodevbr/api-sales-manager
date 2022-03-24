@@ -100,7 +100,7 @@ URL base da API
 #### [POST] Login
 
 ```
-/api/v1/auth/login
+/auth/login
 ```
 
 Body
@@ -131,7 +131,7 @@ Response
 #### [POST] Logout
 
 ```
-/api/v1/auth/logout
+/auth/logout
 ```
 
 Headers
@@ -165,7 +165,7 @@ Response
 #### [POST] Usuário Logado
 
 ```
-/api/v1/auth/me
+/auth/me
 ```
 
 Headers
@@ -205,7 +205,7 @@ Response
 #### [POST] Atualizar Token
 
 ```
-/api/v1/auth/refresh
+/auth/refresh
 ```
 
 Headers
@@ -245,7 +245,7 @@ Response
 #### [GET] Listar Clientes
 
 ```
-/api/v1/customers
+/customers
 ```
 
 #### Parâmetros Opcionais
@@ -309,7 +309,7 @@ Response
 #### [GET] Visualizar Cliente
 
 ```
-/api/v1/customers/{customerId}
+/customers/{customerId}
 ```
 
 Headers
@@ -351,7 +351,7 @@ Response
 #### [PUT] Cadastrar Cliente
 
 ```
-/api/v1/customers
+/customers
 ```
 
 Headers
@@ -395,7 +395,7 @@ Response
 #### [POST] Atualizar Cliente
 
 ```
-/api/v1/customers/{customerId}
+/customers/{customerId}
 ```
 
 Headers
@@ -440,7 +440,7 @@ Response
 #### [DELETE] Remover Cliente
 
 ```
-/api/v1/customers/{customerId}
+/customers/{customerId}
 ```
 
 Headers
@@ -484,7 +484,7 @@ Response
 #### [GET] Listar Produtos
 
 ```
-/api/v1/products
+/products
 ```
 
 #### Parâmetros Opcionais
@@ -564,7 +564,7 @@ Response
 #### [GET] Visualizar Produto
 
 ```
-/api/v1/products/{productId}
+/products/{productId}
 ```
 
 Headers
@@ -611,7 +611,7 @@ Response
 #### [PUT] Cadastrar Produto
 
 ```
-/api/v1/products
+/products
 ```
 
 Headers
@@ -659,7 +659,7 @@ Response
 #### [POST] Atualizar Produto
 
 ```
-/api/v1/products/{productId}
+/products/{productId}
 ```
 
 Headers
@@ -707,7 +707,7 @@ Response
 #### [DELETE] Remover Produto
 
 ```
-/api/v1/products/{productId}
+/products/{productId}
 ```
 
 Headers
@@ -751,7 +751,7 @@ Response
 #### [GET] Listar Vendedores
 
 ```
-/api/v1/sellers
+/sellers
 ```
 
 #### Parâmetros Opcionais
@@ -823,7 +823,7 @@ Response
 #### [GET] Visualizar Vendedor
 
 ```
-/api/v1/sellers/{sellerId}
+/sellers/{sellerId}
 ```
 
 Headers
@@ -866,7 +866,7 @@ Response
 #### [PUT] Cadastrar Vendedor
 
 ```
-/api/v1/sellers
+/sellers
 ```
 
 Headers
@@ -913,7 +913,7 @@ Response
 #### [POST] Atualizar Vendedor
 
 ```
-/api/v1/sellers/{sellerId}
+/sellers/{sellerId}
 ```
 
 Headers
@@ -958,7 +958,7 @@ Response
 #### [DELETE] Remover Vendedor
 
 ```
-/api/v1/sellers/{sellerId}
+/sellers/{sellerId}
 ```
 
 Headers
@@ -1003,7 +1003,7 @@ Response
 #### [GET] Listar Pedidos
 
 ```
-/api/v1/orders
+/orders
 ```
 
 #### Parâmetros Opcionais
@@ -1177,7 +1177,7 @@ Response
 #### [GET] Visualizar Pedido
 
 ```
-/api/v1/orders/{orderId}
+/orders/{orderId}
 ```
 
 Headers
@@ -1271,7 +1271,7 @@ Response
 #### [PUT] Cadastrar Pedido
 
 ```
-/api/v1/orders
+/orders
 ```
 
 Headers
@@ -1372,7 +1372,7 @@ Response
 #### [POST] Atualizar Pedido
 
 ```
-/api/v1/orders/{orderId}
+/orders/{orderId}
 ```
 
 Headers
@@ -1473,7 +1473,7 @@ Response
 #### [DELETE] Remover Pedido
 
 ```
-/api/v1/orders/{orderId}
+/orders/{orderId}
 ```
 
 Headers
