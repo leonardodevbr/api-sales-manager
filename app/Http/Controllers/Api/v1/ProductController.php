@@ -21,15 +21,15 @@ class ProductController extends Controller
         $orderBy = $request->get('order_by', 'asc');
         $limit = $request->get('limit', 10);
 
-        $customers = Product::with('batch')
+        $products = Product::with('batch')
             ->orderBy($sortBy, $orderBy)
             ->simplePaginate($limit);
 
-        if ($customers->isEmpty()) {
+        if ($products->isEmpty()) {
             return $this->prepareResponse(null, "Nenhum produto cadastrado.", 404);
         }
 
-        return $this->prepareResponse($customers, "Lista de produtos.");
+        return $this->prepareResponse($products, "Lista de produtos.");
     }
 
     /**
@@ -40,14 +40,14 @@ class ProductController extends Controller
      */
     public function show($id): JsonResponse
     {
-        $customer = Product::with('batch')
+        $product = Product::with('batch')
             ->find($id);
 
-        if (!$customer) {
+        if (!$product) {
             return $this->prepareResponse(null, "Produto #$id não encontrado.", 404);
         }
 
-        return $this->prepareResponse($customer, "Dados do produto #$id.");
+        return $this->prepareResponse($product, "Dados do produto #$id.");
     }
 
     /**
@@ -60,9 +60,9 @@ class ProductController extends Controller
     {
         try {
 
-            $customer = Product::create($request->all());
+            $product = Product::create($request->all());
 
-            return $this->prepareResponse($customer, "Produto cadastrado com sucesso!");
+            return $this->prepareResponse($product, "Produto cadastrado com sucesso!");
 
         } catch (\Throwable $e) {
             return $this->prepareResponse($request->all(), $e->getMessage(), 500);
@@ -78,17 +78,17 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, $id): JsonResponse
     {
-        $customer = Product::find($id);
+        $product = Product::find($id);
 
-        if (!$customer) {
+        if (!$product) {
             return $this->prepareResponse(null, "Produto #$id não encontrado.", 404);
         }
 
         try {
 
-            $customer->update($request->all());
+            $product->update($request->all());
 
-            return $this->prepareResponse($customer, "Produto atualizado com sucesso!");
+            return $this->prepareResponse($product, "Produto atualizado com sucesso!");
 
         } catch (\Throwable $e) {
             return $this->prepareResponse($request->all(), $e->getMessage(), 500);
@@ -104,17 +104,17 @@ class ProductController extends Controller
     public function destroy($id): JsonResponse
     {
 
-        $customer = Product::find($id);
+        $product = Product::find($id);
 
-        if (!$customer) {
+        if (!$product) {
             return $this->prepareResponse(null, "Produto #$id não encontrado.", 404);
         }
 
         try {
 
-            $customer->delete();
+            $product->delete();
 
-            return $this->prepareResponse($customer, "Produto removido com sucesso!");
+            return $this->prepareResponse($product, "Produto removido com sucesso!");
 
         } catch (\Throwable $e) {
             return $this->prepareResponse(["id" => $id], $e->getMessage(), 500);

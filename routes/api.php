@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\ProductController;
 use App\Http\Controllers\Api\v1\SellerController;
 use App\Http\Controllers\Api\v1\CustomerController;
+use App\Http\Controllers\Api\v1\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,6 +56,14 @@ Route::group(['prefix' => 'v1'], function ($router) {
             $router->put('/', [SellerController::class, "store"]);
             $router->post('/{id}', [SellerController::class, "update"]);
             $router->delete('/{id}', [SellerController::class, "destroy"]);
+        });
+
+        $router->group(['prefix' => 'orders'], function ($router) {
+            $router->get('/', [OrderController::class, "index"]);
+            $router->get('/{id}', [OrderController::class, "show"]);
+            $router->put('/', [OrderController::class, "store"]);
+            $router->post('/{id}', [OrderController::class, "update"]);
+            $router->delete('/{id}', [OrderController::class, "destroy"]);
         });
 
     });

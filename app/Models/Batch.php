@@ -25,6 +25,10 @@ class Batch extends Model
 
     protected $table = 'batches';
 
+    protected $appends = [
+        "quantity_products"
+    ];
+
     protected $hidden = [
         'created_at',
         'updated_at',
@@ -53,5 +57,10 @@ class Batch extends Model
     public function getManufacturingDateAttribute()
     {
         return Carbon::parse($this->attributes['manufacturing_date'])->format('d/m/Y');
+    }
+
+    public function getQuantityProductsAttribute()
+    {
+        return $this->products()->count();
     }
 }

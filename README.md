@@ -225,10 +225,11 @@ Response
 ```
 
 #### Parâmetros Opcionais
+
 - sort_by (default:name)
 - order_by (default:asc)
 - limit (default:10)
-<br><br>
+  <br><br>
 
 Headers
 
@@ -452,7 +453,6 @@ Response
 }
 ```
 
-
 <br><br>
 
 ## Produtos
@@ -464,6 +464,7 @@ Response
 ```
 
 #### Parâmetros Opcionais
+
 - sort_by (default:name)
 - order_by (default:asc)
 - limit (default:10)
@@ -719,10 +720,9 @@ Response
 }
 ```
 
-
 <br><br>
 
-## Vendedores
+## Pedidos
 
 #### [GET] Listar Vendedores
 
@@ -731,6 +731,7 @@ Response
 ```
 
 #### Parâmetros Opcionais
+
 - sort_by (default:name)
 - order_by (default:asc)
 - limit (default:10)
@@ -970,3 +971,543 @@ Response
   "message": "Vendedor removido com sucesso!"
 }
 ```
+
+<br><br>
+
+## Pedidos
+
+#### [GET] Listar Pedidos
+
+```
+/api/v1/orders
+```
+
+#### Parâmetros Opcionais
+
+- sort_by (default:amount)
+- order_by (default:asc)
+- limit (default:10)
+  <br><br>
+
+Headers
+
+```json
+{
+  "Authorization": "Bearer {ACCESS_TOKEN}",
+  "Content-Type": "application/json"
+}
+```
+
+Body
+
+```json
+{
+}
+```
+
+Response
+
+```json
+{
+  "statusCode": 200,
+  "data": {
+    "current_page": 1,
+    "data": [
+      {
+        "id": 2,
+        "seller_id": 1,
+        "customer_id": 1,
+        "amount": "387.71",
+        "code": "240322033448FVRQJU",
+        "created_at": "2022-03-24T18:34:48.000000Z",
+        "customer": {
+          "id": 1,
+          "name": "George Santana",
+          "cpf": "187.266.373-71",
+          "birthdate": "11/01/1992"
+        },
+        "seller": {
+          "id": 1,
+          "user_id": 9,
+          "name": "Maximiano Gusmão Filho",
+          "cnpj": "56.323.600/1115-57"
+        },
+        "products": [
+          {
+            "id": 1,
+            "batch_id": 4,
+            "code": "2022032409398",
+            "name": "Lira",
+            "color": "navy",
+            "description": "Passeámos alguns minutos compridos, até que o espirito do meu coração, se vontade de minha mãe, antes de qualquer trabalho effectivo por parte de José Dias; eu já fazia esforços, leitor amigo. Não.",
+            "price": "172.29",
+            "pivot": {
+              "order_id": "2",
+              "product_id": "1"
+            }
+          },
+          {
+            "id": 6,
+            "batch_id": 6,
+            "code": "2022032402405",
+            "name": "Camacho",
+            "color": "blue",
+            "description": "Mamãe é boa de mais; dá-lhe attenção de Capitú ia respondendo promptamente e bem. Trazia um vestidinho melhor e os olhos de prima Justina, passeando de um commerciante de objectos americanos. Estava.",
+            "price": "168.14",
+            "pivot": {
+              "order_id": "2",
+              "product_id": "6"
+            }
+          },
+          {
+            "id": 8,
+            "batch_id": 9,
+            "code": "2022032473082",
+            "name": "Montenegro",
+            "color": "lime",
+            "description": "Talvez esperasse uma menina. Não disse mal della; ao contrario das pessoas que enxovalham depressa o vestido novo, elle trazia o velho tenor, durará emquanto durar o theatro, não se póde? --Póde-se.",
+            "price": "47.28",
+            "pivot": {
+              "order_id": "2",
+              "product_id": "8"
+            }
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "seller_id": 2,
+        "customer_id": 4,
+        "amount": "653.85",
+        "code": "240322033411BY2B2N",
+        "created_at": "2022-03-24T18:34:11.000000Z",
+        "customer": {
+          "id": 4,
+          "name": "Dr. Kléber Júlio de Souza Neto",
+          "cpf": "518.576.030-59",
+          "birthdate": "15/11/1998"
+        },
+        "seller": {
+          "id": 2,
+          "user_id": 1,
+          "name": "Valentina Valentin Rezende Jr.",
+          "cnpj": "27.896.578/6701-90"
+        },
+        "products": [
+          {
+            "id": 3,
+            "batch_id": 1,
+            "code": "2022032443482",
+            "name": "Paes",
+            "color": "fuchsia",
+            "description": "Como vês, Capitú, aos quatorze annos, alta, forte e atrevido. Não imitava ninguem; não vivia com rapazes, que me acompanham para todos os meus olhos longos, constantes, enfiados nelles, e á isto.",
+            "price": "253.76",
+            "pivot": {
+              "order_id": "1",
+              "product_id": "3"
+            }
+          },
+          {
+            "id": 7,
+            "batch_id": 6,
+            "code": "2022032407961",
+            "name": "Campos",
+            "color": "aqua",
+            "description": "Era ainda bonita e moça, mas teimava em dizer que conferia, rotulava e pregava na memoria a minha vida se casa bem á definição. Cantei um _duo_ ternissimo, depois um _trio_, depois um _quatuor..._.",
+            "price": "193.93",
+            "pivot": {
+              "order_id": "1",
+              "product_id": "7"
+            }
+          },
+          {
+            "id": 2,
+            "batch_id": 7,
+            "code": "2022032428055",
+            "name": "Valente",
+            "color": "purple",
+            "description": "Depois, ainda falou gravemente e longamente sobre a nuca por um latim que ninguem apprende, e é a opinião dos imparciaes. Os amigos que me achava em momento tão grave; obedeci, a principio não disse.",
+            "price": "206.16",
+            "pivot": {
+              "order_id": "1",
+              "product_id": "2"
+            }
+          }
+        ]
+      }
+    ],
+    "first_page_url": "http://localhost:8000/api/v1/orders?page=1",
+    "from": 1,
+    "next_page_url": null,
+    "path": "http://localhost:8000/api/v1/orders",
+    "per_page": "2",
+    "prev_page_url": null,
+    "to": 2
+  },
+  "message": "Lista de pedidos."
+}
+```
+
+<br><br>
+
+#### [GET] Visualizar Pedido
+
+```
+/api/v1/orders/{orderId}
+```
+
+Headers
+
+```json
+{
+  "Authorization": "Bearer {ACCESS_TOKEN}",
+  "Content-Type": "application/json"
+}
+```
+
+Body
+
+```json
+{
+}
+```
+
+Response
+
+```json
+{
+  "statusCode": 200,
+  "data": {
+    "id": 2,
+    "seller_id": 1,
+    "customer_id": 1,
+    "amount": "387.71",
+    "code": "240322033448FVRQJU",
+    "created_at": "2022-03-24T18:34:48.000000Z",
+    "customer": {
+      "id": 1,
+      "name": "George Santana",
+      "cpf": "187.266.373-71",
+      "birthdate": "11/01/1992"
+    },
+    "seller": {
+      "id": 1,
+      "user_id": 9,
+      "name": "Maximiano Gusmão Filho",
+      "cnpj": "56.323.600/1115-57"
+    },
+    "products": [
+      {
+        "id": 1,
+        "batch_id": 4,
+        "code": "2022032409398",
+        "name": "Lira",
+        "color": "navy",
+        "description": "Passeámos alguns minutos compridos, até que o espirito do meu coração, se vontade de minha mãe, antes de qualquer trabalho effectivo por parte de José Dias; eu já fazia esforços, leitor amigo. Não.",
+        "price": "172.29",
+        "pivot": {
+          "order_id": "2",
+          "product_id": "1"
+        }
+      },
+      {
+        "id": 6,
+        "batch_id": 6,
+        "code": "2022032402405",
+        "name": "Camacho",
+        "color": "blue",
+        "description": "Mamãe é boa de mais; dá-lhe attenção de Capitú ia respondendo promptamente e bem. Trazia um vestidinho melhor e os olhos de prima Justina, passeando de um commerciante de objectos americanos. Estava.",
+        "price": "168.14",
+        "pivot": {
+          "order_id": "2",
+          "product_id": "6"
+        }
+      },
+      {
+        "id": 8,
+        "batch_id": 9,
+        "code": "2022032473082",
+        "name": "Montenegro",
+        "color": "lime",
+        "description": "Talvez esperasse uma menina. Não disse mal della; ao contrario das pessoas que enxovalham depressa o vestido novo, elle trazia o velho tenor, durará emquanto durar o theatro, não se póde? --Póde-se.",
+        "price": "47.28",
+        "pivot": {
+          "order_id": "2",
+          "product_id": "8"
+        }
+      }
+    ]
+  },
+  "message": "Dados do pedido #2."
+}
+```
+
+<br><br>
+
+#### [PUT] Cadastrar Pedido
+
+```
+/api/v1/orders
+```
+
+Headers
+
+```json
+{
+  "Authorization": "Bearer {ACCESS_TOKEN}",
+  "Content-Type": "application/json"
+}
+```
+
+Body
+
+```json
+{
+  "seller_id": "1",
+  "customer_id": "1",
+  "products_id": [
+    1,
+    6,
+    8
+  ]
+}
+```
+
+Response
+
+```json
+{
+  "statusCode": 200,
+  "data": {
+    "seller_id": 1,
+    "customer_id": 1,
+    "code": "240322033448FVRQJU",
+    "amount": "387.71",
+    "created_at": "2022-03-24T18:34:48.000000Z",
+    "id": 2,
+    "customer": {
+      "id": 1,
+      "name": "George Santana",
+      "cpf": "187.266.373-71",
+      "birthdate": "11/01/1992"
+    },
+    "seller": {
+      "id": 1,
+      "user_id": 9,
+      "name": "Maximiano Gusmão Filho",
+      "cnpj": "56.323.600/1115-57"
+    },
+    "products": [
+      {
+        "id": 1,
+        "batch_id": 4,
+        "code": "2022032409398",
+        "name": "Lira",
+        "color": "navy",
+        "description": "Passeámos alguns minutos compridos, até que o espirito do meu coração, se vontade de minha mãe, antes de qualquer trabalho effectivo por parte de José Dias; eu já fazia esforços, leitor amigo. Não.",
+        "price": "172.29",
+        "pivot": {
+          "order_id": "2",
+          "product_id": "1"
+        }
+      },
+      {
+        "id": 6,
+        "batch_id": 6,
+        "code": "2022032402405",
+        "name": "Camacho",
+        "color": "blue",
+        "description": "Mamãe é boa de mais; dá-lhe attenção de Capitú ia respondendo promptamente e bem. Trazia um vestidinho melhor e os olhos de prima Justina, passeando de um commerciante de objectos americanos. Estava.",
+        "price": "168.14",
+        "pivot": {
+          "order_id": "2",
+          "product_id": "6"
+        }
+      },
+      {
+        "id": 8,
+        "batch_id": 9,
+        "code": "2022032473082",
+        "name": "Montenegro",
+        "color": "lime",
+        "description": "Talvez esperasse uma menina. Não disse mal della; ao contrario das pessoas que enxovalham depressa o vestido novo, elle trazia o velho tenor, durará emquanto durar o theatro, não se póde? --Póde-se.",
+        "price": "47.28",
+        "pivot": {
+          "order_id": "2",
+          "product_id": "8"
+        }
+      }
+    ]
+  },
+  "message": "Pedido cadastrado com sucesso!"
+}
+```
+
+<br><br>
+
+#### [POST] Atualizar Pedido
+
+```
+/api/v1/orders/{orderId}
+```
+
+Headers
+
+```json
+{
+  "Authorization": "Bearer {ACCESS_TOKEN}",
+  "Content-Type": "application/json"
+}
+```
+
+Body
+
+```json
+{
+  "seller_id": "1",
+  "customer_id": "1",
+  "products_id": [
+    3,
+    2,
+    6
+  ]
+}
+```
+
+Response
+
+```json
+{
+  "statusCode": 200,
+  "data": {
+    "id": 2,
+    "seller_id": 1,
+    "customer_id": 1,
+    "amount": "628.06",
+    "code": "240322033448FVRQJU",
+    "created_at": "2022-03-24T18:34:48.000000Z",
+    "customer": {
+      "id": 1,
+      "name": "George Santana",
+      "cpf": "187.266.373-71",
+      "birthdate": "11/01/1992"
+    },
+    "seller": {
+      "id": 1,
+      "user_id": 9,
+      "name": "Maximiano Gusmão Filho",
+      "cnpj": "56.323.600/1115-57"
+    },
+    "products": [
+      {
+        "id": 6,
+        "batch_id": 6,
+        "code": "2022032402405",
+        "name": "Camacho",
+        "color": "blue",
+        "description": "Mamãe é boa de mais; dá-lhe attenção de Capitú ia respondendo promptamente e bem. Trazia um vestidinho melhor e os olhos de prima Justina, passeando de um commerciante de objectos americanos. Estava.",
+        "price": "168.14",
+        "pivot": {
+          "order_id": "2",
+          "product_id": "6"
+        }
+      },
+      {
+        "id": 3,
+        "batch_id": 1,
+        "code": "2022032443482",
+        "name": "Paes",
+        "color": "fuchsia",
+        "description": "Como vês, Capitú, aos quatorze annos, alta, forte e atrevido. Não imitava ninguem; não vivia com rapazes, que me acompanham para todos os meus olhos longos, constantes, enfiados nelles, e á isto.",
+        "price": "253.76",
+        "pivot": {
+          "order_id": "2",
+          "product_id": "3"
+        }
+      },
+      {
+        "id": 2,
+        "batch_id": 7,
+        "code": "2022032428055",
+        "name": "Valente",
+        "color": "purple",
+        "description": "Depois, ainda falou gravemente e longamente sobre a nuca por um latim que ninguem apprende, e é a opinião dos imparciaes. Os amigos que me achava em momento tão grave; obedeci, a principio não disse.",
+        "price": "206.16",
+        "pivot": {
+          "order_id": "2",
+          "product_id": "2"
+        }
+      }
+    ]
+  },
+  "message": "Pedido atualizado com sucesso!"
+}
+```
+
+<br><br>
+
+#### [DELETE] Remover Pedido
+
+```
+/api/v1/orders/{orderId}
+```
+
+Headers
+
+```json
+{
+  "Authorization": "Bearer {ACCESS_TOKEN}",
+  "Content-Type": "application/json"
+}
+```
+
+Body
+
+```json
+{
+}
+```
+
+Response
+
+```json
+{
+  "statusCode": 200,
+  "data": {
+    "id": 2,
+    "seller_id": 1,
+    "customer_id": 1,
+    "amount": "628.06",
+    "code": "240322033448FVRQJU",
+    "created_at": "2022-03-24T18:34:48.000000Z"
+  },
+  "message": "Pedido removido com sucesso!"
+}
+```
+
+<br><br>
+Todos os endpoints podem ser testados através da ferramenta [Postman](https://www.postman.com/) importando a collection
+disponível [neste link](https://www.getpostman.com/collections/6ad4880ec708777c3e90).
+<br><br>
+Os dados gerados inicialmente para login são:<br>
+
+#### E-mail:
+
+```
+admin@domain.com
+```
+
+#### Senha:
+
+```
+password
+```
+
+<br><br>
+
+Obrigado!
+
+<br><br>
+
+Desenvolvido por
+[Leonardo Oliveira](https://www.linkedin.com/in/adsleonardo/)
