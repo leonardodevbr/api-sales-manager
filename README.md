@@ -1,68 +1,92 @@
 # Configurações do Projeto
 
+Para rodar este projeto é necessário ter o [Docker](https://www.docker.com/) instalado na sua máquina.
+<br><br>
+Caso já o tenha instalado, faça o clone do projeto e siga as instruções abaixo.
+<br>
 <br>
 
-Criar o arquivo .env
+1 - Criar o arquivo .env
 
 ```sh
 cp .env.example .env
 ```
 
 <br>
-Compilar a imagem do App
+2 - Compilar a imagem do App
 
 ```sh
 docker-compose build app
 ```
 
 <br>
-Iniciar os contâiners do projeto
+3 - Iniciar os contâiners do projeto
 
 ```sh
 docker-compose up -d
 ```
 
 <br>
-Acessar o bash do container
+4 - Acessar o bash do container
 
 ```sh
 docker-compose exec app bash
 ```
 
 <br>
-Instalar as dependências do projeto
+5 - Instalar as dependências do projeto
 
 ```sh
 composer install
 ```
 
 <br>
-Gerar a key do projeto Laravel
+6 - Gerar a key do projeto Laravel
 
 ```sh
 php artisan key:generate
 ```
 
 <br>
-Gerar a key JWT
+7 - Gerar a key para o JWT
 
 ```sh
 php artisan jwt:secret
 ```
 
 <br>
-Gerar as tabelas
+8 - Criar o arquivo do banco de dados SQLite
+
+```sh
+touch database/database.sqlite
+```
+
+<br>
+9 - Gerar as tabelas
 
 ```sh
 php artisan migrate
 ```
 
 <br>
-Gerar dados falsos para testar a aplicação
+10 - Gerar dados falsos para testar a aplicação
 
 ```sh
 php artisan db:seed
 ```
+
+<br>
+
+### Agora já deve ser possível acessar os endpoints da aplicação.
+
+A Collection do Postman disponibilizada acima já deve ter as configurações necessárias para testar a API. <br>
+
+- [x] Variável {{host}} com a URL base do projeto;
+- [x] Variável {{token}} que será preenchida automaticamente após login;
+- [x] Método de autenticação global com Bearer Token;
+
+OBS: Não é necessário configurar o método de autenticação nos endpoints, pois já estão pegando a configuração global da
+Collection.
 
 <br>
 URL base da API
