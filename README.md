@@ -79,7 +79,7 @@ php artisan db:seed
 ### Agora já deve ser possível acessar os endpoints da aplicação.
 
 Todos os endpoints podem ser testados através da ferramenta [Postman](https://www.postman.com/), importando a collection
-disponível [neste link](https://www.getpostman.com/collections/6ad4880ec708777c3e90).
+disponível [neste link](https://www.getpostman.com/collections/d3cbc7ee31ef180aef6d).
 <br><br>
 Os dados gerados inicialmente para login são:<br>
 
@@ -179,7 +179,7 @@ Response
 
 <br><br>
 
-#### [POST] Usuário Logado
+#### [GET] Usuário Logado
 
 ```
 /auth/me
@@ -219,7 +219,7 @@ Response
 
 <br><br>
 
-#### [POST] Atualizar Token
+#### [PUT] Atualizar Token
 
 ```
 /auth/refresh
@@ -365,7 +365,7 @@ Response
 
 <br><br>
 
-#### [PUT] Cadastrar Cliente
+#### [POST] Cadastrar Cliente
 
 ```
 /customers
@@ -409,7 +409,7 @@ Response
 
 <br><br>
 
-#### [POST] Atualizar Cliente
+#### [PUT] Atualizar Cliente
 
 ```
 /customers/{customerId}
@@ -625,7 +625,7 @@ Response
 
 <br><br>
 
-#### [PUT] Cadastrar Produto
+#### [POST] Cadastrar Produto
 
 ```
 /products
@@ -673,7 +673,7 @@ Response
 
 <br><br>
 
-#### [POST] Atualizar Produto
+#### [PUT] Atualizar Produto
 
 ```
 /products/{productId}
@@ -880,7 +880,7 @@ Response
 
 <br><br>
 
-#### [PUT] Cadastrar Vendedor
+#### [POST] Cadastrar Vendedor
 
 ```
 /sellers
@@ -927,7 +927,7 @@ Response
 
 <br><br>
 
-#### [POST] Atualizar Vendedor
+#### [PUT] Atualizar Vendedor
 
 ```
 /sellers/{sellerId}
@@ -1285,7 +1285,7 @@ Response
 
 <br><br>
 
-#### [PUT] Cadastrar Pedido
+#### [POST] Cadastrar Pedido
 
 ```
 /orders
@@ -1386,7 +1386,7 @@ Response
 
 <br><br>
 
-#### [POST] Atualizar Pedido
+#### [PUT] Atualizar Pedido
 
 ```
 /orders/{orderId}
