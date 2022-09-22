@@ -219,7 +219,7 @@ Response
 
 <br><br>
 
-#### [PUT] Atualizar Token
+#### [POST] Atualizar Token
 
 ```
 /auth/refresh
